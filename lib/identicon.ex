@@ -4,14 +4,14 @@ defmodule Identicon do
     |> hash_input
     |> pick_colour
     |> build_grid
-    |> Enum.map(&mirror_row/1)
-    |> List.flatten()
-    |> Enum.with_index()
   end
 
   def build_grid(%Identicon.Image{hex: hex} = image) do
     hex
     |> Enum.chunk(3)
+    |> Enum.map(&mirror_row/1)
+    |> List.flatten()
+    |> Enum.with_index()
   end
 
   def mirror_row(row) do
