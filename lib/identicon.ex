@@ -5,6 +5,7 @@ defmodule Identicon do
     |> pick_colour
     |> build_grid
     |> Enum.map(&mirror_row/1)
+    |> List.flatten()
   end
 
   def build_grid(%Identicon.Image{hex: hex} = image) do
